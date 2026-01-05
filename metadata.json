@@ -1,0 +1,7 @@
+{
+  "name": "Mamino Engineering Dashboard",
+  "description": "An advanced engineering tender management platform featuring AI-powered matching, document tracking, and real-time application assistance.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
