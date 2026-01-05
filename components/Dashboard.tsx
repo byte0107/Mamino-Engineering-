@@ -30,12 +30,13 @@ const Dashboard: React.FC<DashboardProps> = ({ onViewTender, onNavigate }) => {
         </div>
       </div>
 
-      {/* KPI Summary Stats */}
+      {/* KPI Summary Stats - Interactive Buttons */}
       <div className="px-4 py-4">
         <div className="grid grid-cols-2 gap-3">
           <button 
             onClick={() => onNavigate(Screen.TENDER_LIST, 'New')}
-            className="group flex flex-col items-start gap-3 text-left rounded-xl p-5 bg-white dark:bg-[#1E2D30] shadow-sm border border-slate-100 dark:border-slate-800 hover:border-primary/50 dark:hover:border-primary/50 transition-all active:scale-[0.98]"
+            aria-label="View New Tenders"
+            className="group flex flex-col items-start gap-3 text-left rounded-xl p-5 bg-white dark:bg-[#1E2D30] shadow-sm border border-slate-100 dark:border-slate-800 hover:border-primary/50 dark:hover:border-primary/50 transition-all active:scale-[0.97] hover:shadow-md"
           >
             <div className="flex items-center justify-between w-full">
               <div className="size-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
@@ -50,7 +51,8 @@ const Dashboard: React.FC<DashboardProps> = ({ onViewTender, onNavigate }) => {
           </button>
           <button 
             onClick={() => onNavigate(Screen.TENDER_LIST, 'Applied')}
-            className="group flex flex-col items-start gap-3 text-left rounded-xl p-5 bg-white dark:bg-[#1E2D30] shadow-sm border border-slate-100 dark:border-slate-800 hover:border-emerald-500/50 dark:hover:border-emerald-500/50 transition-all active:scale-[0.98]"
+            aria-label="View Our Applications"
+            className="group flex flex-col items-start gap-3 text-left rounded-xl p-5 bg-white dark:bg-[#1E2D30] shadow-sm border border-slate-100 dark:border-slate-800 hover:border-emerald-500/50 dark:hover:border-emerald-500/50 transition-all active:scale-[0.97] hover:shadow-md"
           >
             <div className="flex items-center justify-between w-full">
               <div className="size-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
@@ -70,14 +72,14 @@ const Dashboard: React.FC<DashboardProps> = ({ onViewTender, onNavigate }) => {
       <div className="flex flex-col gap-2 pt-2 pb-6">
         <div className="flex items-center justify-between px-4">
           <h3 className="text-lg font-bold leading-tight">Lithendara tse loketseng</h3>
-          <button onClick={() => onNavigate(Screen.TENDER_LIST)} className="text-sm font-medium text-primary">Bona kaofela</button>
+          <button onClick={() => onNavigate(Screen.TENDER_LIST)} className="text-sm font-medium text-primary hover:underline">Bona kaofela</button>
         </div>
         <div className="flex overflow-x-auto pb-4 pt-2 px-4 gap-4 snap-x snap-mandatory no-scrollbar">
           {MOCK_TENDERS.map((tender) => (
             <div 
               key={tender.id}
               onClick={() => onViewTender(tender)}
-              className="snap-start shrink-0 cursor-pointer w-[280px] flex flex-col gap-0 bg-white dark:bg-[#1E2D30] rounded-xl overflow-hidden shadow-sm border border-slate-100 dark:border-slate-800"
+              className="snap-start shrink-0 cursor-pointer w-[280px] flex flex-col gap-0 bg-white dark:bg-[#1E2D30] rounded-xl overflow-hidden shadow-sm border border-slate-100 dark:border-slate-800 hover:shadow-lg transition-shadow"
             >
               <div className="relative w-full h-32 bg-cover bg-center" style={{ backgroundImage: `url('${tender.image}')` }}>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -126,7 +128,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onViewTender, onNavigate }) => {
         </div>
       </div>
 
-      <BottomNav currentScreen={Screen.DASHBOARD} onNavigate={onNavigate} />
+      <BottomNav currentScreen={Screen.DASHBOARD} onNavigate={(s) => onNavigate(s)} />
     </div>
   );
 };
